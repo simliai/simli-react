@@ -11,7 +11,6 @@ type E2EBody = {
 }
 
 export class SimliController {
-    private apiKey: string | null = null;
     private connectionListeners: ConnectionListener[] = [];
     private state: ConnectionState = {
         isConnected: false,
@@ -19,9 +18,6 @@ export class SimliController {
         chatbotId: null,
     };
 
-    constructor(apiKey: string) {
-        this.apiKey = apiKey;
-    }
 
     mute() {
         this.state.callObject?.setLocalAudio(false);
@@ -33,41 +29,10 @@ export class SimliController {
         console.log('Unmuting');
     }
 
-    async startConnection(faceId: string, voiceId: string, systemPrompt?: string, firstMessage?: string) {
+    async startConnection(roomUrl: string) {
         try {
             console.log('Starting connection');
-            if (this.apiKey === null) {
-                console.error('API key is not set');
-                return;
-            }
-
-            const body: E2EBody = {
-                apiKey: this.apiKey.trim(),
-                faceId: faceId.trim(),
-                voiceId: voiceId.trim(),
-                systemPrompt: systemPrompt,
-                firstMessage: firstMessage,
-            }
-
-            // Remove systemPrompt and firstMessage if they are empty
-            if (systemPrompt == undefined || systemPrompt.trim() === "") {
-                delete body.systemPrompt;
-            }
-            if (firstMessage == undefined || firstMessage.trim() === "") {
-                delete body.firstMessage;
-            }
-
-            // Call the API to get the room URL
-            const response = await fetch("https://api.simli.ai/startE2ESession", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(body),
-            })
-
-            const data = await response.json();
-            const roomUrl = data.roomUrl;
+            
             let newCallObject = DailyIframe.getCallInstance();
 
             if (newCallObject === undefined) {

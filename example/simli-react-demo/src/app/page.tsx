@@ -1,9 +1,9 @@
 'use client';
 import { useEffect, useRef, useState } from "react";
-import { SimliController, SimliReact } from "simli-react";
+import { SimliController, SimliReact, getRoomUrl } from "simli-react";
 
 export default function Home() {
-  const apiKey = process.env.NEXT_PUBLIC_SIMLI_API_KEY || ""; 
+  const apiKey = process.env.NEXT_PUBLIC_SIMLI_API_KEY || "";
   if (!apiKey) {
     throw new Error("SIMLI_API_KEY is not set");
   }
@@ -15,19 +15,23 @@ export default function Home() {
     if (controller) {
       return;
     }
-    setController(new SimliController(apiKey));
+    setController(new SimliController());
   }, []);
 
   console.log(apiKey);
-  // const controller = new SimliController(apiKey);
   const handleConnect = async () => {
     console.log("Connecting");
-    await controller?.startConnection(
-      "tmp9i8bbq7c",
-      "f114a467-c40a-4db8-964d-aaba89cd08fa",
-      "You are a helpful assistant",
-      "Hello, how can I help you today?"
-    );
+    
+    const roomUrl = await getRoomUrl({
+      apiKey: apiKey,
+      faceId: "tmp9i8bbq7c",
+      voiceId: "f114a467-c40a-4db8-964d-aaba89cd08fa",
+      systemPrompt: "You are a helpful assistant",
+      firstMessage: "Hello, how can I help you today?",
+    })
+    
+    console.log("joining room", roomUrl);
+    await controller?.startConnection(roomUrl);
     console.log("Connected");
   }
 
