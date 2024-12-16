@@ -10,6 +10,8 @@
   "author": "waleed",
   "license": "ISC",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.0",
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",
@@ -17,17 +19,14 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript2": "^0.36.0",
-    "typescript": "^5.7.2",
-    "@daily-co/daily-js": "^0.73.0",
-    "@daily-co/daily-react": "^0.22.0"
-    
+    "typescript": "^5.7.2"
   },
   "dependencies": {
+    "@daily-co/daily-js": "^0.73.0",
+    "@daily-co/daily-react": "^0.22.0",
     "@testing-library/react": "^16.1.0"
   },
   "peerDependencies": {
-    "@daily-co/daily-js": "^0.73.0",
-    "@daily-co/daily-react": "^0.22.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   }

@@ -32,7 +32,7 @@ export const SimliReact = ({ controller }: SimliReactProps) => {
         <div>
             {
                 connectionState.callObject && (
-                    <div className="h-96 w-96 ">
+                    <div className="h-96 w-96">
                         <DailyProvider callObject={connectionState.callObject}>
                             {
                                 connectionState.chatbotId && (

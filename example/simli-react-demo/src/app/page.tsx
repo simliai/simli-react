@@ -37,12 +37,12 @@ export default function Home() {
 
   return (
     <div className="flex items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      {
-        controller && (
-          <SimliReact controller={controller} />
-        )
-      }
       <div className="flex flex-col gap-4">
+        {
+          controller && (
+            <SimliReact controller={controller} />
+          )
+        }
         <button className="bg-blue-500 text-white px-4 py-2 rounded-md" onClick={handleConnect}>
           Connect
         </button>
