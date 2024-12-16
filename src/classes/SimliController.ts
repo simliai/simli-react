@@ -85,7 +85,11 @@ export class SimliController {
                 const participantId = event.participant.session_id;
                 const userName = event.participant.user_name;
                 if (userName === "Chatbot" && this.state.chatbotId === null) {
-                    this.state.chatbotId = participantId;
+                    this.state = {
+                        ...this.state,
+                        chatbotId: participantId,
+                    };
+                    this.notifyListeners();
                 }
             })
 
