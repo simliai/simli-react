@@ -6,9 +6,10 @@ import Tile from './components/tile';
 
 interface SimliReactProps {
     controller: SimliController;
+    className?: string;
 }
 
-export const SimliReact = ({ controller }: SimliReactProps) => {
+export const SimliReact = ({ controller, className="h-96 w-96" }: SimliReactProps) => {
     const [connectionState, setConnectionState] = useState<ConnectionState>({
         isConnected: false,
         callObject: null,
@@ -32,7 +33,7 @@ export const SimliReact = ({ controller }: SimliReactProps) => {
         <div>
             {
                 connectionState.callObject && (
-                    <div className="h-96 w-96">
+                    <div className={className}>
                         <DailyProvider callObject={connectionState.callObject}>
                             {
                                 connectionState.chatbotId && (

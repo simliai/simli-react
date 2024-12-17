@@ -17,6 +17,7 @@ export class SimliController {
         callObject: null,
         chatbotId: null,
     };
+    private callbackAvatarJoined?: () => void;
 
 
     mute() {
@@ -55,6 +56,9 @@ export class SimliController {
                         chatbotId: participantId,
                     };
                     this.notifyListeners();
+                    if (this.callbackAvatarJoined) {
+                        this.callbackAvatarJoined();
+                    }
                 }
             })
 
@@ -65,6 +69,7 @@ export class SimliController {
             console.error('Error starting connection', error);
         }
     }
+
 
     stopConnection() {
         this.state.callObject?.leave();
@@ -90,6 +95,8 @@ export class SimliController {
         return this.state;
     }
 
-
+    setCallbackAvatarJoined(callback: () => void) {
+        this.callbackAvatarJoined = callback;
+    }
 
 }
