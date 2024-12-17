@@ -60,4 +60,11 @@ controller.current.stopConnection();
 ```
 
 
+## Example
 
+A full example can be found at  [/examples/simli-react-demo](./examples/simli-react-demo)
+
+
+## Docs
+
+Docs can be found at [Docs](https://docs.simli.com/introduction)
