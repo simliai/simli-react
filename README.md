@@ -62,7 +62,7 @@ controller.current.stopConnection();
 
 ## Example
 
-A full example can be found at  [/examples/simli-react-demo](./examples/simli-react-demo)
+A full example can be found at  [/example/simli-react-demo](./example/simli-react-demo)
 
 
 ## Docs
