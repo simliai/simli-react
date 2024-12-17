@@ -19,7 +19,7 @@ import { SimliController, SimliReact, getRoomUrl } from "simli-react";
 ### 1. Setup Controller
 
 ```typescript
-const controller = useRef<SimliController>();
+const controller = useRef<SimliController>(new SimliController());
 ```
 
 ### 2. Add React component
