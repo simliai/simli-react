@@ -5,7 +5,7 @@ A simple, easy to use react component to use Simli
 ## Installation
 
 ```bash
-npm install @simliai/simli-react
+npm install @simli/simli-react
 ```
 
 ## Imports
